@@ -48,6 +48,9 @@ void Led_TurnON(LED_ID LedID){
 	if(LedID==LED0){
 		Dio_WRITEChannel(Led0_Port, Led0_Channel, STD_HIGH);
 	}
+	if(LedID==LED1){
+		Dio_WRITEChannel(Led1_Port, Led1_Channel, STD_HIGH);
+	}
 }
 
 /******************************************************************************
@@ -61,6 +64,9 @@ void Led_TurnON(LED_ID LedID){
 void Led_TurnOFF(LED_ID LedID){
 	if(LedID==LED0){
 		Dio_WRITEChannel(Led0_Port, Led0_Channel, STD_LOW);
+	}
+	if(LedID==LED1){
+		Dio_WRITEChannel(Led1_Port, Led1_Channel, STD_LOW);
 	}
 }
 
@@ -76,6 +82,9 @@ void Led_Toggle(LED_ID LedID){
 	if(LedID==LED0){
 		Dio_TOGGLEChannel(Led0_Port, Led0_Channel);
 	}
+	if(LedID==LED1){
+		Dio_TOGGLEChannel(Led1_Port, Led1_Channel);
+	}
 }
 
 
@@ -89,6 +98,8 @@ void Led_Toggle(LED_ID LedID){
 *******************************************************************************/
 void Led_Init(void){
 	Dio_CONFIGChannel(Led0_Port, Led0_Channel, OUTPUT);
+	Dio_CONFIGChannel(Led1_Port, Led1_Channel, OUTPUT);
+
 }
 
 
