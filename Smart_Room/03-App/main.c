@@ -48,11 +48,11 @@ int main(void) {
 		}
 
 		if(data=='g'){
-			Led_Toggle(LED0);
+			Led_Toggle(LED1);
 		}
 
 		if(data=='b'){
-			Led_Toggle(LED0);
+			Led_Toggle(LED1);
 		}
 
 
