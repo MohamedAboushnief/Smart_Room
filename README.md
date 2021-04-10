@@ -1,6 +1,6 @@
 # Smart Room 
 
-This is a simple implementation of a smart room using an Atmega32 microcontroller, Bluetooth, SPI, and UART  communication protocols. The idea is to emulate having a smart room that you can control from your smartphone This project is written in a layered architecture similar to the Autosar standard, and consists of drivers for LED, Button, SPI, UART, Motor, Digital I/O, Interrupts, EEPROM, some of them are not used but might be used in the future. You will find a proteus simulation file of the project in the repo
+This is a simple implementation of a smart room using an Atmega32 microcontroller, Bluetooth, SPI, and UART  communication protocols. The idea is to emulate having a smart room that you can control from your smartphone. This project is written in a layered architecture similar to the Autosar standard, and consists of drivers for LED, Button, SPI, UART, Motor, Digital I/O, Interrupts, EEPROM, some of them are not used but might be used in the future. You will find a proteus simulation file of the project in the repo
 
 ## Software Drivers Used
 - SPI protocol
