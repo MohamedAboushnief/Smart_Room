@@ -23,9 +23,9 @@ This project consists of two ATmega32 microcontrollers, the first one acts as th
 
 ## Installation
 
-# git clone the repo
-# Build the control_room project and add hex file to the first microcontroller
-# Build the smart_room project and add hex file to the second microcontroller
+- git clone the repo
+- Build the control_room project and add hex file to the first microcontroller
+- Build the smart_room project and add hex file to the second microcontroller
 
 ## Prerequisites
 - Install Proteus simulation software
