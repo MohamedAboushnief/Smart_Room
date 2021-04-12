@@ -13,14 +13,15 @@ This is an embedded systems project which is an implementation of a smart room u
 
 
 ## Description
-This project consists of two ATmega32 microcontrollers, the first one acts as the control room and the second one as the smart room. The control room microcontroller is connected to the HC-05 Bluetooth module using UART protocol and then it is connected to the smart room microcontroller using the SPI protocol, the smart room microcontroller has two LEDs connected to it acting as smart lamps or any actuator you want.
+This project consists of two ATmega32 microcontrollers, the first one acts as the control room and the second one as the smart room. The control room microcontroller is connected to the HC-05 Bluetooth module using UART protocol and then it is connected to the smart room microcontroller using the SPI protocol, the smart room microcontroller has three LEDs connected to it acting as Air conditioner, TV and Lights.
 
 ## Proteus Simulation
-![](https://github.com/MohamedAboushnief/Smart_Room/blob/main/Image.PNG)
+![](https://github.com/MohamedAboushnief/Smart_Room/blob/main/Sim.PNG)
 
 ## Scenarios
-- Turn on/off the first LED:  Send 'm' through the Bluetooth Terminal app 
-- Turn on/off the second LED: Send 'g' through the Bluetooth Terminal app 
+- Turn on/off the Air conditioner:  Send '1' through the Bluetooth Terminal app. 
+- Turn on/off the Lights: Send '2' through the Bluetooth Terminal app. 
+- Turn on/off the TV: Send '3' through the Bluetooth Terminal app. 
 
 
 ## Installation
