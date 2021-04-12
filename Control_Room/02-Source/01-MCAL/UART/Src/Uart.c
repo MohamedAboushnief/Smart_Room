@@ -11,6 +11,10 @@
  *  INCLUDES
  *********************************************************************************************************************/
 #include "Uart.h"
+#include "avr/io.h"
+
+#define F_CPU 8000000UL		/* Define frequency here its 8MHz */
+#define BAUD_PRESCALE (((F_CPU / (9600 * 16UL))) - 1)
 
 /**********************************************************************************************************************
 *  LOCAL MACROS CONSTANT\FUNCTION
@@ -50,9 +54,7 @@
 
 
 void UART_Init(Uart_Mode uart_mode, u16 baud_rate, Uart_Interrupt_Mode interrupt_mode, Uart_Data_Bit data_size, Uart_Stop_Bit stop_bit, Uart_Parity_Mode parity_mode, Uart_Device_Mode device_mode){
-	/* Set baud rate */
-	USART_BAUD_RATE_REGISTER_H = (unsigned char)(baud_rate>>8);
-	USART_BAUD_RATE_REGISTER_L = (unsigned char)baud_rate;
+
 
 	/* Enable receiver and transmitter */
 	switch(device_mode){
@@ -136,6 +138,9 @@ void UART_Init(Uart_Mode uart_mode, u16 baud_rate, Uart_Interrupt_Mode interrupt
 	}
 
 
+	/* Set baud rate */
+	USART_BAUD_RATE_REGISTER_H = (u8)(BAUD_PRESCALE>>8);
+	USART_BAUD_RATE_REGISTER_L = (u8)BAUD_PRESCALE;
 
 }
 
@@ -200,6 +205,7 @@ u8 UART_ReceiveChr(void){
 	return USART_DATA_REG;
 
 }
+
 
 
 

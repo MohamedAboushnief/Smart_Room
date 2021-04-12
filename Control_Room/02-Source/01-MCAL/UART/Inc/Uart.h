@@ -49,8 +49,8 @@ typedef enum{
 }Uart_Device_Mode;
 
 typedef enum{
-	SYNC,
-	ASYNC
+	ASYNC,
+	SYNC
 }Uart_Mode;
 
 /**********************************************************************************************************************
@@ -74,6 +74,13 @@ void UART_Init(Uart_Mode, u16, Uart_Interrupt_Mode, Uart_Data_Bit, Uart_Stop_Bit
 void UART_TransmitChr(u8 data);
 void UART_TransmitStr(u8 *str);
 u8 UART_ReceiveChr(void);
+
+
+void USART_Init( u16 baud );
+u8 USART_Receive( void );
+void USART_Transmit( unsigned char data );
+void USART_SendString(char *str);
+
 
 
 #endif  /* FILE_NAME_H */

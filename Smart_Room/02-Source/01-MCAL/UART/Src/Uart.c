@@ -11,6 +11,7 @@
  *  INCLUDES
  *********************************************************************************************************************/
 #include "Uart.h"
+#include "avr/io.h"
 
 /**********************************************************************************************************************
 *  LOCAL MACROS CONSTANT\FUNCTION
@@ -50,9 +51,7 @@
 
 
 void UART_Init(Uart_Mode uart_mode, u16 baud_rate, Uart_Interrupt_Mode interrupt_mode, Uart_Data_Bit data_size, Uart_Stop_Bit stop_bit, Uart_Parity_Mode parity_mode, Uart_Device_Mode device_mode){
-	/* Set baud rate */
-	USART_BAUD_RATE_REGISTER_H = (unsigned char)(baud_rate>>8);
-	USART_BAUD_RATE_REGISTER_L = (unsigned char)baud_rate;
+
 
 	/* Enable receiver and transmitter */
 	switch(device_mode){
@@ -135,6 +134,9 @@ void UART_Init(Uart_Mode uart_mode, u16 baud_rate, Uart_Interrupt_Mode interrupt
 
 	}
 
+	/* Set baud rate */
+	USART_BAUD_RATE_REGISTER_H = (unsigned char)(baud_rate>>8);
+	USART_BAUD_RATE_REGISTER_L = (unsigned char)baud_rate;
 
 
 }
@@ -199,6 +201,37 @@ u8 UART_ReceiveChr(void){
 	/* Get and return received data from buffer */
 	return USART_DATA_REG;
 
+}
+
+
+void USART_Init( u16 baud )
+{
+	/* Set baud rate */
+	UBRRH = (u8)(baud>>8);
+	UBRRL = (u8)baud;
+	/* Enable receiver and transmitter */
+	UCSRB = (1<<RXEN)|(1<<TXEN);
+	/* Set frame format: 8data, 2stop bit */
+	UCSRC = (1<<URSEL)|(3<<UCSZ0);
+}
+
+
+u8 USART_Receive( void )
+{
+/* Wait for data to be received */
+while ( !(UCSRA & (1<<RXC)) )
+;
+/* Get and return received data from buffer */
+return UDR;
+}
+
+void USART_Transmit( unsigned char data )
+{
+/* Wait for empty transmit buffer */
+while ( !( UCSRA & (1<<UDRE)) )
+;
+/* Put data into buffer, sends the data */
+UDR = data;
 }
 
 
