@@ -8,7 +8,6 @@ This is an embedded systems project which is an implementation of a smart room u
 - SPI protocol
 - UART protocol
 - LED
-- Button
 - Digital I/O
 
 
